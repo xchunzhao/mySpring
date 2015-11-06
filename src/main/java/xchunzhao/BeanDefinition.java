@@ -1,0 +1,47 @@
+package xchunzhao;
+
+import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ * Created by CoderZhao on 2015/11/6.
+ * BeanDefinition封装bean
+ */
+public class BeanDefinition {
+    private Object bean;
+    //类类型
+    private Class beanClass;
+    //类名
+    private String beanClassName;
+
+    public BeanDefinition(){
+
+    }
+    public Object getBean(){
+        return bean;
+    }
+
+    public void setBean(Object bean) {
+        this.bean = bean;
+    }
+
+    public Class getBeanClass() {
+        return beanClass;
+    }
+
+    public void setBeanClass(Class beanClass) {
+        this.beanClass = beanClass;
+    }
+
+    public String getBeanClassName() {
+        return beanClassName;
+    }
+
+    public void setBeanClassName(String beanClassName) {
+        this.beanClassName = beanClassName;
+        try{
+            this.beanClass=Class.forName(beanClassName);
+        }catch(ClassNotFoundException e){
+            e.printStackTrace();
+        }
+    }
+}
