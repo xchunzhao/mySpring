@@ -18,11 +18,17 @@ public class BeanFactoryTest {
         BeanDefinition beanDefinition=new BeanDefinition();
         beanDefinition.setBeanClassName("xchunzhao.HelloWorld");
 
+        //装载属性
+        PropertyValues propertyValues=new PropertyValues();
+        propertyValues.addPropertyValue(new PropertyValue("name","xchunzhao"));
+        beanDefinition.setPropertyValues(propertyValues);
+
         //注册bean(已通过反射拿到bean)
         beanFactory.registerBeanDefinition("helloWorld", beanDefinition);
 
+
         //获取实例
         HelloWorld helloWorld= (HelloWorld) beanFactory.getBean("helloWorld");
-
+        helloWorld.helloWorld();
     }
 }
