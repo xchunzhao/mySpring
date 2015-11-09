@@ -8,26 +8,14 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class BeanDefinition {
     private Object bean;
-    //类类型
+
     private Class beanClass;
-    //类名
+
     private String beanClassName;
 
-    private PropertyValues propertyValues;
+    private PropertyValues propertyValues = new PropertyValues();
 
-    public PropertyValues getPropertyValues() {
-        return propertyValues;
-    }
-
-    public void setPropertyValues(PropertyValues propertyValues) {
-        this.propertyValues = propertyValues;
-    }
-
-    public BeanDefinition(){
-
-    }
-    public Object getBean(){
-        return bean;
+    public BeanDefinition() {
     }
 
     public void setBean(Object bean) {
@@ -48,10 +36,22 @@ public class BeanDefinition {
 
     public void setBeanClassName(String beanClassName) {
         this.beanClassName = beanClassName;
-        try{
-            this.beanClass=Class.forName(beanClassName);
-        }catch(ClassNotFoundException e){
+        try {
+            this.beanClass = Class.forName(beanClassName);
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public Object getBean() {
+        return bean;
+    }
+
+    public PropertyValues getPropertyValues() {
+        return propertyValues;
+    }
+
+    public void setPropertyValues(PropertyValues propertyValues) {
+        this.propertyValues = propertyValues;
     }
 }
